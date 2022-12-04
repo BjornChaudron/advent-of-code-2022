@@ -32,11 +32,12 @@ fun main() {
             .sumOf { priorities[it]!! }
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day03_test")
+    val day = "03"
+    val testInput = readInput("Day${day}_test")
     check(part1(testInput) == 157)
     check(part2(testInput) == 70)
 
-    val input = readInput("Day03")
+    val input = readInput("Day$day")
     println(part1(input))
     println(part2(input))
 }
