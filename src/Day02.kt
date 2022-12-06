@@ -24,11 +24,11 @@ fun main() {
 
     // test if implementation meets criteria from the description, like:
     val day = "02"
-    val testInput = readInput("Day${day}_test")
+    val testInput = readLines("Day${day}_test")
     check(part1(testInput) == 15)
     check(part2(testInput) == 12)
 
-    val input = readInput("Day$day")
+    val input = readLines("Day$day")
     println(part1(input))
     println(part2(input))
 }
