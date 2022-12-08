@@ -56,28 +56,25 @@ fun isVisibleFromNorth(treeGrid: Array<Array<Int>>, point: Point) =
     getNorthTrees(treeGrid, point).all { it < treeGrid[point.y][point.x] }
 
 fun getNorthTrees(treeGrid: Array<Array<Int>>, point: Point) =
-    treeGrid.map { row -> row[point.x] }
-        .filterIndexed { idx, _ -> idx < point.y }
-        .reversed()
+    treeGrid.map { row -> row[point.x] }.filterIndexed { idx, _ -> idx < point.y }.reversed()
 
 fun isVisibleFromEast(treeGrid: Array<Array<Int>>, point: Point) =
     getEastTrees(treeGrid, point).all { it < treeGrid[point.y][point.x] }
 
 fun getEastTrees(treeGrid: Array<Array<Int>>, point: Point) =
     treeGrid[point.y].filterIndexed { idx, _ -> idx > point.x }
+
 fun isVisibleFromSouth(treeGrid: Array<Array<Int>>, point: Point) =
     getSouthTrees(treeGrid, point).all { it < treeGrid[point.y][point.x] }
 
 fun getSouthTrees(treeGrid: Array<Array<Int>>, point: Point) =
-    treeGrid.map { row -> row[point.x] }
-        .filterIndexed { idx, _ -> idx > point.y }
+    treeGrid.map { row -> row[point.x] }.filterIndexed { idx, _ -> idx > point.y }
 
 fun isVisibleFromWest(treeGrid: Array<Array<Int>>, point: Point) =
     getWestTrees(treeGrid, point).all { it < treeGrid[point.y][point.x] }
 
 fun getWestTrees(treeGrid: Array<Array<Int>>, point: Point) =
-    treeGrid[point.y].filterIndexed { idx, _ -> idx < point.x }
-        .reversed()
+    treeGrid[point.y].filterIndexed { idx, _ -> idx < point.x }.reversed()
 
 fun findBestScenicScore(treeGrid: Array<Array<Int>>): Int {
     var maxScenicScore = 0
@@ -101,8 +98,7 @@ fun calcScenicScore(treeGrid: Array<Array<Int>>, point: Point): Int {
         getEastTrees(treeGrid, point),
         getSouthTrees(treeGrid, point),
         getWestTrees(treeGrid, point),
-    ).map { calcScenicScoreForDirection(height, it) }
-        .reduce { acc, i -> acc * i }
+    ).map { calcScenicScoreForDirection(height, it) }.reduce { acc, i -> acc * i }
 }
 
 fun calcScenicScoreForDirection(height: Int, trees: List<Int>) =
