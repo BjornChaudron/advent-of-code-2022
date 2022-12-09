@@ -47,7 +47,7 @@ class Simulation(private val length: Int) {
         return Move(direction, times.toInt())
     }
 
-    fun moveHead(direction: String) {
+    private fun moveHead(direction: String) {
         val head = rope.first()
 
         rope[0] = when (direction) {
@@ -59,9 +59,9 @@ class Simulation(private val length: Int) {
         }
     }
 
-    fun isAdjacent(head: Point, tail: Point) = abs(head.x - tail.x) <= 1 && abs(head.y - tail.y) <= 1
+    private fun isAdjacent(head: Point, tail: Point) = abs(head.x - tail.x) <= 1 && abs(head.y - tail.y) <= 1
 
-    fun moveTail(segment: Int) {
+    private fun moveTail(segment: Int) {
         val head = rope[segment - 1]
         val tail = rope[segment]
 
