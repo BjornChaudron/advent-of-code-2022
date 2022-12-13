@@ -21,4 +21,7 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
     .toString(16)
     .padStart(32, '0')
 
+typealias Grid<T> = Map<Point, T>
 data class Point(val x: Int, val y: Int)
+val Point.neighbours: List<Point>
+    get() = arrayOf((-1 to 0), (1 to 0), (0 to -1), (0 to 1)).map { (dx, dy) -> Point(x + dx, y + dy) }
